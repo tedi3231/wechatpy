@@ -33,6 +33,14 @@ class WeChatClient(BaseWeChatClient):
         self.corp_id = corp_id
         self.secret = secret
 
+    @property
+    def access_token_key(self):
+        return '{0}_{1}_access_token'.format(self.appid,self.secret[0:10])
+
+    @property
+    def refresh_token_key(self):
+        return '{0}_{1}_access_token'.format(self.appid,self.secret[0:10])
+
     def fetch_access_token(self):
         """ Fetch access token"""
         return self._fetch_access_token(
